@@ -2,7 +2,12 @@ plugins {
     id 'org.springframework.boot' version '2.4.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+
+    // moowork.node 추가
+    id "com.moowork.node" version "1.3.1"
 }
+
+apply plugin: "com.moowork.node"
 
 group = 'com.gaching'
 version = '0.0.1-SNAPSHOT'
@@ -29,3 +34,20 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+
+def webappDir = "$projectDir/frontend/my-app"
+
+task appNpmInstall(type: NpmTask) {
+    workingDir = file("${webappDir}")
+    args = ["run", "build"]
+}
+
+task copyWebApp(type: Copy) {
+    from 'frontend/my-app/build'
+    into "build/resources/main/static"
+//    into "src/main/resources/static"
+}
+
+copyWebApp.dependsOn(appNpmInstall)
+compileJava.dependsOn(copyWebApp)
