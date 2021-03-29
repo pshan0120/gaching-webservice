@@ -1,4 +1,4 @@
-package com.gaching.gachingwebservice.controller;
+package com.gaching.gachingwebservice.web;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;

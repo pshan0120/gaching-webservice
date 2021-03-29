@@ -1,4 +1,4 @@
-package com.gaching.gachingwebservice.controller;
+package com.gaching.gachingwebservice.web;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
